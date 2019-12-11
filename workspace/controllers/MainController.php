@@ -6,6 +6,7 @@ use core\App;
 use core\Controller;
 use core\Debug;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use workspace\models\Subdomain;
 use workspace\models\User;
 
 class MainController extends Controller
@@ -13,7 +14,12 @@ class MainController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('main/index.tpl', ['title' => 'Название страницы 123', 'h1' => 'Проект ' . App::$config['app_name']]);
+        $model = Subdomain::where(['name' => $_SERVER['SUBDOMAIN']])->first();
+        return $this->render('main/view.tpl', [
+            'model' => $model,
+            'title' => 'Данные',
+            'h1' => 'Данные'
+        ]);
     }
 
     public function actionItems($id)

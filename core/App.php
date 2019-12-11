@@ -33,6 +33,10 @@ class App
      */
     static $configList;
     static $responseType = ResponseType::TEXT_HTML;
+
+    /**
+     * @var $header Header
+     */
     static $header;
 
     public function setConfig($configListFile = 'list.php')
